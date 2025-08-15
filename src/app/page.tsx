@@ -1,3 +1,9 @@
+import { Navbar } from "@/ui";
+
 export default function Home() {
-  return <button className="btn btn-primary">home /</button>;
+  return (
+    <>
+      <Navbar />
+    </>
+  );
 }
