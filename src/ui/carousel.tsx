@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { twMerge } from "tailwind-merge";
 
 function Carousel({
     children,
@@ -7,7 +8,9 @@ function Carousel({
     children: React.ReactNode;
     className?: string;
 }) {
-    return <div className={`carousel w-full ${className}`}>{children}</div>;
+    return (
+        <div className={twMerge("carousel w-full", className)}>{children}</div>
+    );
 }
 
 interface SlideProps {
@@ -21,7 +24,10 @@ interface SlideProps {
 
 function Slide({ src, id, alt, prev, next, className }: SlideProps) {
     return (
-        <div id={id} className={`carousel-item relative w-full ${className}`}>
+        <div
+            id={id}
+            className={twMerge("carousel-item relative w-full", className)}
+        >
             <Image
                 src={src}
                 alt={alt}
