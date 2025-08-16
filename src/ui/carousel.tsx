@@ -13,6 +13,25 @@ function Carousel({
     );
 }
 
+function CarouselButtons({ next, prev }: { next: string; prev: string }) {
+    return (
+        <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+            <a
+                href={prev}
+                className="btn btn-circle opacity-35 hover:opacity-100 transition-opacity duration-200"
+            >
+                ❮
+            </a>
+            <a
+                href={next}
+                className="btn btn-circle opacity-35 hover:opacity-100 transition-opacity duration-200"
+            >
+                ❯
+            </a>
+        </div>
+    );
+}
+
 interface SlideProps {
     id: string;
     src: string;
@@ -36,14 +55,7 @@ function Slide({ src, id, alt, prev, next, className }: SlideProps) {
                 height={1080}
                 className="w-full"
             />
-            <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-                <a href={prev} className="btn btn-circle">
-                    ❮
-                </a>
-                <a href={next} className="btn btn-circle">
-                    ❯
-                </a>
-            </div>
+            <CarouselButtons next={next} prev={prev} />
         </div>
     );
 }
@@ -61,14 +73,7 @@ function Section({ children, id, prev, next }: SectionProps) {
     return (
         <div id={id} className="carousel-item relative w-full">
             {children}
-            <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-                <a href={prev} className="btn btn-circle">
-                    ❮
-                </a>
-                <a href={next} className="btn btn-circle">
-                    ❯
-                </a>
-            </div>
+            <CarouselButtons next={next} prev={prev} />
         </div>
     );
 }

@@ -2,7 +2,7 @@ import { Carousel, Card } from "@/ui";
 
 export default function Page() {
     return (
-        <div className="h-full bg-base-200 items-center justify-around flex flex-col px-12">
+        <div className="h-full bg-base-200 items-center justify-around flex flex-col px-12 border-l-1 border-t-1">
             <div className="hero bg-base-200">
                 <div className="hero-content text-center">
                     <div className="max-w-md">
