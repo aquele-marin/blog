@@ -28,7 +28,7 @@ export default function RootLayout({
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >
-                <div className="flex flex-col max-h-screen h-screen">
+                <div className="flex flex-col max-h-screen h-screen overflow-hidden">
                     <Navbar />
                     <div className="h-screen inline-flex">
                         <Drawer />
