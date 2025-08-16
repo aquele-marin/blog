@@ -1,4 +1,4 @@
-import { Carousel, Card } from "@/ui";
+import { Carousel, Card, Alert } from "@/ui";
 
 export default function Page() {
     return (
