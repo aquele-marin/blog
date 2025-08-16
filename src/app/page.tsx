@@ -37,8 +37,18 @@ export default function Page() {
                         id="slide3"
                         alt="A beautiful sunset over the ocean"
                         prev="#slide2"
-                        next="#slide1"
+                        next="#slide4"
                     />
+                    <Carousel.Section id="slide4" prev="#slide3" next="#slide1">
+                        <Card>
+                            <Card.Title>Card Title</Card.Title>
+                            <Card.Paragraph>
+                                A card component has a figure, a body part, and
+                                inside body there are title and actions parts
+                            </Card.Paragraph>
+                            <Card.Action>Buy Now</Card.Action>
+                        </Card>
+                    </Carousel.Section>
                 </Carousel>
                 <Card>
                     <Card.Title>Card Title</Card.Title>

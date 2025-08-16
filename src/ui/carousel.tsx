@@ -50,4 +50,29 @@ function Slide({ src, id, alt, prev, next, className }: SlideProps) {
 
 Carousel.Slide = Slide;
 
+interface SectionProps {
+    children: React.ReactNode;
+    id: string;
+    prev: string;
+    next: string;
+}
+
+function Section({ children, id, prev, next }: SectionProps) {
+    return (
+        <div id={id} className="carousel-item relative w-full">
+            {children}
+            <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+                <a href={prev} className="btn btn-circle">
+                    ❮
+                </a>
+                <a href={next} className="btn btn-circle">
+                    ❯
+                </a>
+            </div>
+        </div>
+    );
+}
+
+Carousel.Section = Section;
+
 export { Carousel };
