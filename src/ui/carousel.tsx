@@ -67,11 +67,15 @@ interface SectionProps {
     id: string;
     prev: string;
     next: string;
+    className?: string;
 }
 
-function Section({ children, id, prev, next }: SectionProps) {
+function Section({ children, id, prev, next, className }: SectionProps) {
     return (
-        <div id={id} className="carousel-item relative w-full">
+        <div
+            id={id}
+            className={twMerge("carousel-item relative w-full", className)}
+        >
             {children}
             <CarouselButtons next={next} prev={prev} />
         </div>
@@ -79,5 +83,18 @@ function Section({ children, id, prev, next }: SectionProps) {
 }
 
 Carousel.Section = Section;
+
+interface TitleProps {
+    children: React.ReactNode;
+    className?: string;
+}
+
+function Title({ children, className }: TitleProps) {
+    return (
+        <h2 className={twMerge("text-4xl font-bold", className)}>{children}</h2>
+    );
+}
+
+Carousel.Title = Title;
 
 export { Carousel };
