@@ -1,12 +1,6 @@
 import Image from "next/image";
 import { twJoin } from "tailwind-merge";
 
-interface CardProps {
-    children: React.ReactNode;
-    variant?: keyof typeof CARD_VARIANTS;
-    size?: keyof typeof CARD_SIZES;
-}
-
 const CARD_VARIANTS = {
     primary: "card bg-base-100 image-full shadow-sm",
     outlined: "card bg-base-100 border border-base-200 image-full shadow-sm",
@@ -17,6 +11,12 @@ const CARD_SIZES = {
     medium: "card-md",
     large: "card-lg",
 };
+
+interface CardProps {
+    children: React.ReactNode;
+    variant?: keyof typeof CARD_VARIANTS;
+    size?: keyof typeof CARD_SIZES;
+}
 
 function Card({ children, variant = "primary", size = "medium" }: CardProps) {
     return (
