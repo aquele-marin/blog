@@ -1,6 +1,12 @@
-import { Carousel, Card, Alert } from "@/ui";
+import { Carousel, Card } from "@/ui";
+import { projects, articles } from "@/constants";
+import { chunkArray } from "@/utils";
 
 export default function Page() {
+    const projectSections = chunkArray(projects, 3);
+    const articlesSections = chunkArray(articles, 3);
+
+    console.log(projectSections);
     return (
         <div className="h-full bg-base-200 items-center pt-12 gap-4 flex flex-col px-12 border-l-1 border-t-1">
             <div className="hero bg-base-200">
@@ -18,59 +24,76 @@ export default function Page() {
             </div>
             <div className="w-fit flex flex-col h-164 gap-8">
                 <Carousel className="h-3/7 flex flex-col gap-4">
-                    <Carousel.Title>Slide 1</Carousel.Title>
-                    <Carousel.Section
-                        id="slide1"
-                        prev="#slide1"
-                        next="#slide1"
-                        className="flex justify-between gap-4 h-9/12"
-                    >
-                        <Card size="medium">
-                            <Card.Title>Resumo de livro</Card.Title>
-                            <Card.Paragraph>
-                                A card component has a figure, a body part, and
-                                inside body there are title and actions parts
-                            </Card.Paragraph>
-                            <Card.Action>Ver</Card.Action>
-                        </Card>
-                        <Card size="medium">
-                            <Card.Title>Resumo de livro</Card.Title>
-                            <Card.Paragraph>
-                                A card component has a figure, a body part, and
-                                inside body there are title and actions parts
-                            </Card.Paragraph>
-                            <Card.Action>Ver</Card.Action>
-                        </Card>
-                        <Card size="medium">
-                            <Card.Title>Resumo de livro</Card.Title>
-                            <Card.Paragraph>
-                                A card component has a figure, a body part, and
-                                inside body there are title and actions parts
-                            </Card.Paragraph>
-                            <Card.Action>Ver</Card.Action>
-                        </Card>
-                    </Carousel.Section>
+                    <Carousel.Title>Projects</Carousel.Title>
+                    {projectSections.map((section, i) => (
+                        <Carousel.Section
+                            id={projectSections[i][0].id}
+                            prev={
+                                "#" +
+                                projectSections[
+                                    i - 1 < 0
+                                        ? projectSections.length - 1
+                                        : i - 1
+                                ][0].id
+                            }
+                            next={
+                                "#" +
+                                projectSections[
+                                    i + 1 >= projectSections.length ? 0 : i + 1
+                                ][0].id
+                            }
+                            className="flex justify-between gap-4 h-9/12"
+                            key={i}
+                        >
+                            {section.map((project) => (
+                                <Card size="medium" key={project.id}>
+                                    <Card.Title>{project.name}</Card.Title>
+                                    <Card.Paragraph>
+                                        {project.description}
+                                    </Card.Paragraph>
+                                    <Card.Action href="#">
+                                        View Project
+                                    </Card.Action>
+                                </Card>
+                            ))}
+                        </Carousel.Section>
+                    ))}
                 </Carousel>
                 <Carousel className="h-3/7 flex flex-col gap-4">
-                    <Carousel.Title>Slide 2</Carousel.Title>
-
-                    <Carousel.Section
-                        id="slide11"
-                        prev="#slide11"
-                        next="#slide11"
-                        className="flex justify-between gap-4 h-9/12"
-                    >
-                        <Card size="medium">
-                            <Card.Title>Projeto: Retina</Card.Title>
-                            <Card.Paragraph>
-                                A card component has a figure, a body part, and
-                                inside body there are title and actions parts
-                            </Card.Paragraph>
-                            <Card.Action>Buy Now</Card.Action>
-                        </Card>
-                        <Card></Card>
-                        <Card></Card>
-                    </Carousel.Section>
+                    <Carousel.Title>Articles</Carousel.Title>
+                    {articlesSections.map((section, i) => (
+                        <Carousel.Section
+                            id={articlesSections[i][0].id}
+                            prev={
+                                "#" +
+                                articlesSections[
+                                    i - 1 < 0
+                                        ? articlesSections.length - 1
+                                        : i - 1
+                                ][0].id
+                            }
+                            next={
+                                "#" +
+                                articlesSections[
+                                    i + 1 >= articlesSections.length ? 0 : i + 1
+                                ][0].id
+                            }
+                            className="flex justify-between gap-4 h-9/12"
+                            key={i}
+                        >
+                            {section.map((article) => (
+                                <Card size="medium" key={article.id}>
+                                    <Card.Title>{article.name}</Card.Title>
+                                    <Card.Paragraph>
+                                        {article.description}
+                                    </Card.Paragraph>
+                                    <Card.Action href="#">
+                                        Read Article
+                                    </Card.Action>
+                                </Card>
+                            ))}
+                        </Carousel.Section>
+                    ))}
                 </Carousel>
             </div>
         </div>

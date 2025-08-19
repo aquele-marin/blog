@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { twJoin } from "tailwind-merge";
 
 const CARD_VARIANTS = {
@@ -47,10 +48,17 @@ function Paragraph({ children }: { children: string }) {
 
 Card.Paragraph = Paragraph;
 
-function Action({ children }: { children: string }) {
+interface ActionProps {
+    children: string;
+    href: string;
+}
+
+function Action({ children, href = "#" }: ActionProps) {
     return (
         <div className="card-actions justify-end">
-            <button className="btn btn-primary">{children}</button>
+            <Link href={href}>
+                <button className="btn btn-primary">{children}</button>
+            </Link>
         </div>
     );
 }
