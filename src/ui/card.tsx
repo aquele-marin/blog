@@ -17,12 +17,24 @@ interface CardProps {
     children: React.ReactNode;
     variant?: keyof typeof CARD_VARIANTS;
     size?: keyof typeof CARD_SIZES;
+    className?: string;
 }
 
-function Card({ children, variant = "primary", size = "medium" }: CardProps) {
+function Card({
+    children,
+    variant = "primary",
+    size = "medium",
+    className,
+}: CardProps) {
     return (
         // <div className="card  bg-base-100 image-full w-96 shadow-sm">
-        <div className={twJoin(CARD_VARIANTS[variant], CARD_SIZES[size])}>
+        <div
+            className={twJoin(
+                CARD_VARIANTS[variant],
+                CARD_SIZES[size],
+                className
+            )}
+        >
             <figure>
                 <Image
                     src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
