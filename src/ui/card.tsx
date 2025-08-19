@@ -8,9 +8,9 @@ const CARD_VARIANTS = {
 };
 
 const CARD_SIZES = {
-    small: "card-sm",
-    medium: "card-md",
-    large: "card-lg",
+    small: "card-sm max-w-sm",
+    medium: "card-md max-w-md",
+    large: "card-lg max-w-lg",
 };
 
 interface CardProps {
